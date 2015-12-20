@@ -1,0 +1,14 @@
+* Create a copy of git repo in local machine
+	git clone https://github.com/manjula-aw/test.git
+* Add a new file 
+	git add <file>
+* Add all new files
+	git add -A
+* Lock the repo for this file change 
+	git commit -m "your_message"
+* Submit/Sync the above commit change to the git server repo
+	git push
+* Check the latest updates in git repo and in your local repo.
+	git status
+* Sync with the latest changes from git repo server
+	git pull
