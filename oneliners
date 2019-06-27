@@ -1,2 +1,2 @@
 # TODO fix last part
-cat nmap.gnmap | grep Up | cut -d " " -f2 | grep -ve '.1$' | grep -ve '.254$' | grep -v $(ifconfig | grep "\binet\b" | grep -v "127.0.0.1" | awk '{print $2};')
+cat nmap.gnmap | grep Up | cut -d " " -f2 | grep -ve '.1$' | grep -ve '.254$' | grep -v $(ifconfig | grep -a1 '^e' | grep "\binet\b" | awk '{print $2}')
