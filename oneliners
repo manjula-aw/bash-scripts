@@ -1,2 +1,8 @@
 # TODO fix last part
 cat nmap.gnmap | grep Up | cut -d " " -f2 | grep -ve '.1$' | grep -ve '.254$' | grep -v $(ifconfig | grep -a1 '^e' | grep "\binet\b" | awk '{print $2}')
+
+# Long way alternative to 'ss -pln4 | grep `ps -ef | grep -v grep | grep derby.jar| awk '{print $2}'`' in Docker container
+for sid in $(ls -l /proc/`ps -ef | grep -v grep | grep derby.jar| awk '{print $2}'`/fd/ | grep socket | cut -d'>' -f2 | grep -oP '\d+');do echo $((16#`cat /proc/47/net/tcp | grep ${sid} | awk '{print $2}' | cut -d':' -f2`));done
+
+
+exec 5<>/dev/tcp/127.0.0.1/1527; cat <&5 & cat >&5; exec 5>&-
