@@ -1,0 +1,17 @@
+mkdir ../jarfiles
+
+find . -type f -iname \*.jar -exec cp {} ../jarfiles/ \;
+
+cd ../jarfiles/
+
+find . -type f -name \*.jar -exec unzip {} \;
+
+find . -type f -name \*.jar
+
+find ./BOOT-INF/ -type f -name \*.jar -exec unzip {} \;
+
+find . -type f -name \*.jar | wc -l
+find . -type f -name \*.class | wc -l
+
+find . -type f -iname \*.class -exec bash -c '"/c/Program Files/Java/jdk1.8.0_171/bin/javap.exe" -v -l -p -constants {} > `basename {}`.src' \;
+
